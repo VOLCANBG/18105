@@ -1,0 +1,68 @@
+
+float x, y, speedX, speedY;
+float z = 10;
+float b = 150;
+int v = 150;
+
+void setup() {
+ size(800,600);
+  fill(255,0 , 0);
+              reset();
+}
+
+void reset() {
+  x = width/2;
+  y = height/2;
+  speedX = 3;
+  speedY = 3;
+}
+
+void draw() { 
+  background(25,255,255);
+  
+  ellipse(x, y, z, z);
+  if (key=='s') {
+    v+=5;
+  }
+  else if(key=='w') {
+    v -= 5;
+  }
+  if((x < 0) || (x > width)) {
+    reset();
+  }
+    
+  rect(30,v,10,b);
+  rect(width-30, mouseY-b/2, 10, b);
+
+  x += speedX;
+  y += speedY;
+
+ 
+  if ( x > width-30 && x < width -20 && y > mouseY-b/2 && y < mouseY+b/2 ) {
+    speedX = speedX * -1;
+  } 
+  if ((x < 30) && (y > v) & (y < v+150)) { 
+    speedX = speedX * -1;
+  }
+
+ 
+  
+  
+
+
+  
+  if (y > height || y<0) {
+    speedY *= -1;
+  }
+  if(v > (width+150)) {
+    v =- 5;
+  } 
+  if(v < 0) {
+    v =+ 5;
+  }
+
+
+
+
+
+}
